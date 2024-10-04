@@ -17,7 +17,7 @@ jobs:
         with:
           gradle-version: 8.8
       - run: cd app
-      - run: ${pwd} && make build
+      - run: pwd && make build
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
