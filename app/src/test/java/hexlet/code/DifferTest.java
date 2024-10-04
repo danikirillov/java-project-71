@@ -27,11 +27,14 @@ class DifferTest {
 
     private static Stream<Arguments> provideFilesForGenerateTest() {
         return Stream.of(
-            Arguments.of("wellFormedPlain1.json", "wellFormedPlain2.json", "wellFormedPlainJsonDiff.txt"),
-            Arguments.of("empty.json", "wellFormedPlain2.json", "emptyAndWellFormedPlainJsonDiff.txt"),
-            Arguments.of("wellFormedPlain1.json", "empty.json", "wellFormedPlainJsonAndEmptyDiff.txt"),
-            Arguments.of("empty.json", "empty.json", "empty.txt"),
-            Arguments.of("sortTestFile1.json", "sortTestFile2.json", "sortTestJsonDiff.txt")
+            Arguments.of("wellFormedPlain1.json", "wellFormedPlain2.json", "wellFormedPlainDiff.txt"),
+            Arguments.of("empty.json", "wellFormedPlain2.json", "emptyAndWellFormedPlainDiff.txt"),
+            Arguments.of("wellFormedPlain1.json", "empty.json", "wellFormedPlainAndEmptyDiff.txt"),
+            Arguments.of("empty.json", "empty.json", "emptyDiff.txt"),
+            Arguments.of("sortTestFile1.json", "sortTestFile2.json", "sortTestDiff.txt"),
+
+            Arguments.of("wellFormedPlain1.yaml", "wellFormedPlain2.yml", "wellFormedPlainDiff.txt"),
+            Arguments.of("sortTestFile1.yml", "sortTestFile2.yaml", "sortTestDiff.txt")
         );
     }
 
