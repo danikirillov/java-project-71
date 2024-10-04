@@ -59,7 +59,8 @@ public final class Differ {
     private static Map<String, String> parseJson(String path2, ObjectMapper objectMapper) throws IOException {
         return objectMapper.readValue(
             toFile(path2),
-            new TypeReference<>() {}
+            new TypeReference<>() {
+            }
         );
     }
 
