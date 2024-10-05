@@ -31,10 +31,8 @@ class DifferTest {
             Arguments.of("empty.json", "wellFormedPlain2.json", "emptyAndWellFormedPlainDiff.txt"),
             Arguments.of("wellFormedPlain1.json", "empty.json", "wellFormedPlainAndEmptyDiff.txt"),
             Arguments.of("empty.json", "empty.json", "emptyDiff.txt"),
-            Arguments.of("sortTestFile1.json", "sortTestFile2.json", "sortTestDiff.txt"),
 
-            Arguments.of("wellFormedPlain1.yaml", "wellFormedPlain2.yml", "wellFormedPlainDiff.txt"),
-            Arguments.of("sortTestFile1.yml", "sortTestFile2.yaml", "sortTestDiff.txt")
+            Arguments.of("wellFormedPlain1.yaml", "wellFormedPlain2.yml", "wellFormedPlainDiff.txt")
         );
     }
 

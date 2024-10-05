@@ -8,3 +8,6 @@
 
 ### Asciinema for the 8th step (plain yaml files difference)
 [![asciicast](https://asciinema.org/a/BkQ6KFxFmZ6PPXeyz6v835mW1.svg)](https://asciinema.org/a/BkQ6KFxFmZ6PPXeyz6v835mW1)
+
+### Asciinema for the 9th step (complex yaml and json files difference)
+[![asciicast](https://asciinema.org/a/Uj1Bi9vaYtlAt1tR4gFWUvD80.svg)](https://asciinema.org/a/Uj1Bi9vaYtlAt1tR4gFWUvD80)

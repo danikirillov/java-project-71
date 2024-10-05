@@ -3,6 +3,7 @@ package hexlet.code;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public final class Differ {
@@ -14,18 +15,18 @@ public final class Differ {
         var file1Pairs = nameToValueForFile1.entrySet();
         for (var file1Pair : file1Pairs) {
             var fieldName = file1Pair.getKey();
-            var fieldValue = file1Pair.getValue();
-            var updatedFieldValue = nameToValueForFile2.get(fieldName);
+            var fieldValue = Optional.ofNullable(file1Pair.getValue()).orElse("null");
 
-            if (fieldValue.equals(updatedFieldValue)) {
-                diff.add(new DiffLine(Sign.NONE, fieldName, fieldValue));
-                continue;
-            }
+            if (nameToValueForFile2.containsKey(fieldName)) {
+                var updatedFieldValue = Optional.ofNullable(nameToValueForFile2.get(fieldName)).orElse("null");
 
-            diff.add(new DiffLine(Sign.MINUS, fieldName, fieldValue));
-            if (updatedFieldValue != null) {
+                if (fieldValue.equals(updatedFieldValue)) {
+                    diff.add(new DiffLine(Sign.NONE, fieldName, fieldValue));
+                    continue;
+                }
                 diff.add(new DiffLine(Sign.PLUS, fieldName, updatedFieldValue));
             }
+            diff.add(new DiffLine(Sign.MINUS, fieldName, fieldValue));
         }
 
         for (var fieldName : nameToValueForFile1.keySet()) {

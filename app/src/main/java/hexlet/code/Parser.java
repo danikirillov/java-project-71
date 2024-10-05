@@ -11,7 +11,7 @@ import java.util.Map;
 
 public final class Parser {
 
-    public static Map<String, String> parse(String path) throws IOException {
+    public static Map<String, Object> parse(String path) throws IOException {
         var objectMapper = getObjectMapper(path);
         return objectMapper.readValue(
             toFile(path),

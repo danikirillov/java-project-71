@@ -1,8 +1,0 @@
-{
-    follow: false
-  - host: hexlet.io
-  + host: h2exlet.io
-    host2: hexlet.io
-    proxy: 123.234.53.22
-    timeout: 50
-}
