@@ -11,7 +11,7 @@ public final class Differ {
     public static String generate(String path1, String path2) throws IOException {
         return generate(path1, path2, "stylish");
     }
-    
+
     public static String generate(String path1, String path2, String format) throws IOException {
         var nameToValueForFile1 = Parser.parse(path1);
         var nameToValueForFile2 = Parser.parse(path2);

@@ -13,7 +13,7 @@ import java.util.concurrent.Callable;
     version = "1.0.0-SNAPSHOT",
     description = "Compares two configuration files and shows a difference."
 )
-public class App implements Callable<Integer> {
+public final class App implements Callable<Integer> {
     @Parameters(paramLabel = "filepath1", description = "path to the first file")
     private String filePath1;
     @Parameters(paramLabel = "filepath2", description = "path to the second file")
