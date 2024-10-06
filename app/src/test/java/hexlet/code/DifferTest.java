@@ -29,8 +29,10 @@ class DifferTest {
         return Stream.of(
             Arguments.of("wellFormed1.json", "wellFormed2.json", "wellFormedDiff.txt", "stylish"),
             Arguments.of("wellFormed1.json", "wellFormed2.json", "plainFormatWellFormedDiff.txt", "plain"),
+            Arguments.of("wellFormed1.json", "wellFormed2.json", "jsonFormatWellFormedDiff.txt", "json"),
             Arguments.of("empty.json", "wellFormed2.json", "emptyAndWellFormedDiff.txt", "stylish"),
             Arguments.of("empty.json", "wellFormed2.json", "plainFormatEmptyAndWellFormedDiff.txt", "plain"),
+            Arguments.of("empty.json", "wellFormed2.json", "jsonFormatEmptyAndWellFormedDiff.txt", "json"),
             Arguments.of("wellFormed1.json", "empty.json", "wellFormedAndEmptyDiff.txt", "stylish"),
             Arguments.of("wellFormed1.json", "empty.json", "plainFormatWellFormedAndEmptyDiff.txt", "plain"),
             Arguments.of("empty.json", "empty.json", "emptyDiff.txt", "stylish"),

@@ -14,3 +14,6 @@
 
 ### Asciinema for the 10th step (plain format)
 [![asciicast](https://asciinema.org/a/DNmccmoyYrnTTIpbowb5k1iLM.svg)](https://asciinema.org/a/DNmccmoyYrnTTIpbowb5k1iLM)
+
+### Asciinema for the 11th step (json format)
+[![asciicast](https://asciinema.org/a/c9CemcO6ArsA2UTbB8GnKOwlU.svg)](https://asciinema.org/a/c9CemcO6ArsA2UTbB8GnKOwlU)
