@@ -1,8 +1,4 @@
 package hexlet.code;
 
-public record DiffLine(Sign sign, String name, Object value) {
-    @Override
-    public String toString() {
-        return sign.getSymbol() + " " + name + ": " + value;
-    }
+public record DiffLine(Status status, String name, Object oldValue, Object newValue) {
 }

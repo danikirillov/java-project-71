@@ -1,5 +1,5 @@
 run-dist:
-	./build/install/app/bin/app src/test/resources/fixtures/wellFormedPlain1.yaml src/test/resources/fixtures/wellFormedPlain2.yml
+	./build/install/app/bin/app -f plain src/test/resources/fixtures/wellFormedPlain1.yaml src/test/resources/fixtures/wellFormedPlain2.yml
 
 build:
 	./gradlew clean build

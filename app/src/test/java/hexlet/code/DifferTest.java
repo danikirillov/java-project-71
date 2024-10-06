@@ -27,23 +27,29 @@ class DifferTest {
 
     private static Stream<Arguments> provideFilesForGenerateTest() {
         return Stream.of(
-            Arguments.of("wellFormedPlain1.json", "wellFormedPlain2.json", "wellFormedPlainDiff.txt"),
-            Arguments.of("empty.json", "wellFormedPlain2.json", "emptyAndWellFormedPlainDiff.txt"),
-            Arguments.of("wellFormedPlain1.json", "empty.json", "wellFormedPlainAndEmptyDiff.txt"),
-            Arguments.of("empty.json", "empty.json", "emptyDiff.txt"),
+            Arguments.of("wellFormed1.json", "wellFormed2.json", "wellFormedDiff.txt", "stylish"),
+            Arguments.of("wellFormed1.json", "wellFormed2.json", "plainFormatWellFormedDiff.txt", "plain"),
+            Arguments.of("empty.json", "wellFormed2.json", "emptyAndWellFormedDiff.txt", "stylish"),
+            Arguments.of("empty.json", "wellFormed2.json", "plainFormatEmptyAndWellFormedDiff.txt", "plain"),
+            Arguments.of("wellFormed1.json", "empty.json", "wellFormedAndEmptyDiff.txt", "stylish"),
+            Arguments.of("wellFormed1.json", "empty.json", "plainFormatWellFormedAndEmptyDiff.txt", "plain"),
+            Arguments.of("empty.json", "empty.json", "emptyDiff.txt", "stylish"),
+            Arguments.of("empty.json", "empty.json", "plainFormatEmptyDiff.txt", "plain"),
 
-            Arguments.of("wellFormedPlain1.yaml", "wellFormedPlain2.yml", "wellFormedPlainDiff.txt")
+            Arguments.of("wellFormed1.yaml", "wellFormed2.yml", "wellFormedDiff.txt", "stylish"),
+            Arguments.of("wellFormed1.yaml", "wellFormed2.yml", "plainFormatWellFormedDiff.txt", "plain")
         );
     }
 
-    @ParameterizedTest(name = "Generate method test {index} - for {0} and {1}, expected {2}")
+    @ParameterizedTest(name = "Generate method test {index} -f {3} - for {0} and {1}, expected {2}")
     @MethodSource("provideFilesForGenerateTest")
-    void generateForJsonsTest(String fileName1, String fileName2, String diffFileName) throws IOException {
+    void generateForJsonsTest(String fileName1, String fileName2, String diffFileName, String format)
+        throws IOException {
         var expected = readFixture(diffFileName);
         var path1 = getFixturePath(fileName1).toString();
         var path2 = getFixturePath(fileName2).toString();
 
-        var actual = Differ.generate(path1, path2);
+        var actual = Differ.generate(path1, path2, format);
 
         assertEquals(expected, actual);
     }
