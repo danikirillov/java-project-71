@@ -1,7 +1,7 @@
 package hexlet.code.formatters;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import hexlet.code.DiffLine;
+import hexlet.code.model.DiffLine;
 
 import java.util.List;
 

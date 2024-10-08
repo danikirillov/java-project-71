@@ -1,6 +1,6 @@
 package hexlet.code.formatters;
 
-import hexlet.code.DiffLine;
+import hexlet.code.model.DiffLine;
 
 import java.util.List;
 

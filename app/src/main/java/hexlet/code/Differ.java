@@ -1,11 +1,13 @@
 package hexlet.code;
 
 import hexlet.code.formatters.Formatter;
+import hexlet.code.model.FileType;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static hexlet.code.DifferenceFinder.createChangeList;
 
 public final class Differ {
     public static String generate(String path1, String path2) throws IOException {
@@ -13,32 +15,21 @@ public final class Differ {
     }
 
     public static String generate(String path1, String path2, String format) throws IOException {
-        var nameToValueForFile1 = Parser.parse(path1);
-        var nameToValueForFile2 = Parser.parse(path2);
+        var file1 = readFile(path1);
+        var file2 = readFile(path2);
 
-        var diff = new ArrayList<DiffLine>();
-        var file1Pairs = nameToValueForFile1.entrySet();
-        for (var file1Pair : file1Pairs) {
-            var fieldName = file1Pair.getKey();
-            var fieldValue = file1Pair.getValue();
-            var updatedFieldValue = nameToValueForFile2.get(fieldName);
-            var status = Status.REMOVED;
-            if (nameToValueForFile2.containsKey(fieldName)) {
-                status = Objects.equals(fieldValue, updatedFieldValue) ? Status.UNTOUCHED : Status.UPDATED;
-            }
-            diff.add(new DiffLine(status, fieldName, fieldValue, updatedFieldValue));
-        }
+        var nameToValueForFile1 = Parser.parse(file1, FileType.fromFilePath(path1));
+        var nameToValueForFile2 = Parser.parse(file2, FileType.fromFilePath(path2));
 
-        for (var fieldName : nameToValueForFile1.keySet()) {
-            nameToValueForFile2.remove(fieldName);
-        }
-
-        var remainingFile2Pairs = nameToValueForFile2.entrySet();
-        for (var file2Pair : remainingFile2Pairs) {
-            diff.add(new DiffLine(Status.ADDED, file2Pair.getKey(), null, file2Pair.getValue()));
-        }
-
-        diff.sort(Comparator.comparing(DiffLine::name));
+        var diff = createChangeList(nameToValueForFile1, nameToValueForFile2);
         return Formatter.format(diff, format);
+    }
+
+    private static String readFile(String uri) throws IOException {
+        var filePath = Paths
+            .get(uri)
+            .toAbsolutePath()
+            .normalize();
+        return Files.readString(filePath).trim();
     }
 }

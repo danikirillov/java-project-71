@@ -1,7 +1,7 @@
 package hexlet.code.formatters;
 
-import hexlet.code.DiffLine;
-import hexlet.code.Status;
+import hexlet.code.model.DiffLine;
+import hexlet.code.model.Status;
 
 import java.util.List;
 
